@@ -88,18 +88,9 @@ string postfix(string chain, Stack<char>* s)
         case '/':
         case '^':
         {
-            if (isEmpty(s))
-                push(s, chain[i]);
-            else if (!isEmpty(s) && checkHierarchy(top(s),chain[i]) == 1)
-            {
-                push(s, chain[i]);
-            }
-            else
-            {
-                while (!isEmpty(s) && top(s) != '(')
+                while (!isEmpty(s) && top(s) != '(' && checkHierarchy(top(s), chain[i]) != 1)
                     res += pop(s);
                 push(s, chain[i]);
-            }
         }break;
         case '(':
         {
